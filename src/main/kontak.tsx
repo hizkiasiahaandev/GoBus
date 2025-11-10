@@ -18,7 +18,7 @@ export default function KontakPage() {
 
             <div className="space-y-2 text-sm text-slate-700">
               <p>
-                <span className="font-semibold">Alamat:</span> Jl. ABC
+                <span className="font-semibold">Alamat:</span> Jl. Sempurna No 212
               </p>
               <p>
                 <span className="font-semibold">Telepon:</span> 08123495

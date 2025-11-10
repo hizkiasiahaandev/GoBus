@@ -2,7 +2,7 @@
 
 import { Button } from "@/components/ui/button"
 import { Card } from "@/components/ui/card"
-import busThumb from "@/assets/bus.jpg"
+import busThumb from "@/assets/img/bus1.png"
 import { Star } from "lucide-react"
 import { useNavigate } from "react-router-dom"
 

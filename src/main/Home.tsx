@@ -1,8 +1,9 @@
 "use client"
 
 import { ArrowRight, ShieldCheck, MapPinned, TicketCheck, Headphones } from "lucide-react"
-import heroBus from "@/assets/bus.jpg"
-import whyImage from "@/assets/bus.jpg"
+import heroBus from "@/assets/img/bus.png"
+import whyImage from "@/assets/img/logo1.png"
+import whyFeatures from "@/assets/img/logo2.png"
 
 export default function BerandaPage() {
   return (
@@ -32,7 +33,7 @@ export default function BerandaPage() {
       <section className="py-20">
         <div className="max-w-7xl mx-auto px-4 grid lg:grid-cols-2 items-center gap-10">
           <div className="flex justify-center lg:justify-start">
-            <img src={heroBus} alt="Perjalanan GoBus" className="w-full max-w-md h-auto drop-shadow-xl" />
+            <img src={whyImage} alt="Perjalanan GoBus" className="w-full max-w-md h-auto drop-shadow-xl" />
           </div>
           <div className="space-y-5">
             <h2 className="text-3xl md:text-4xl font-bold text-indigo-600 leading-tight">
@@ -104,7 +105,7 @@ export default function BerandaPage() {
           </div>
 
           <div className="flex justify-center lg:justify-end">
-            <img src={whyImage} alt="Mengapa memilih GoBus" className="w-full max-w-md h-auto drop-shadow-xl" />
+            <img src={whyFeatures} alt="Mengapa memilih GoBus" className="w-full max-w-md h-auto drop-shadow-xl" />
           </div>
         </div>
       </section>

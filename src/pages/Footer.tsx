@@ -10,9 +10,7 @@ export default function Footer() {
           <h2 className="text-3xl font-semibold tracking-tight">GoBus</h2>
 
           <p className="max-w-xl text-sm md:text-base text-indigo-50 leading-relaxed">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris blandit tincidunt eleifend.
-            Praesent justo nisi, condimentum sit amet nibh a, gravida feugiat mi. Donec vel sem eget
-            nulla malesuada venenatis.
+            Ada pertanyaan seputar tiket, jadwal, atau layanan kami? Tim GoBus siap membantu Anda kapan saja.
           </p>
 
           <div className="flex items-center gap-4 pt-4">

@@ -4,7 +4,7 @@ import { Send, MapPin, Calendar } from "lucide-react"
 import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
-import busSearch from "@/assets/bus.jpg"
+import busSearch from "@/assets/img/bus1.png"
 import { useNavigate } from "react-router-dom"
 
 export default function BusPage() {
