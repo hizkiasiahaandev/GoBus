@@ -2,64 +2,101 @@
 
 import { Home, Bus, Phone, Menu, Mail, MapPin, Clock } from "lucide-react"
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
-import { useState } from "react"
-import { Link } from "react-router-dom"
+import { useEffect, useState } from "react"
+import { Link, useLocation, useNavigate } from "react-router-dom"
 
 export default function Navbar() {
   const [open, setOpen] = useState(false)
   const [activeMenu, setActiveMenu] = useState("")
+  const navigate = useNavigate()
+  const location = useLocation()
 
   const menuItems = [
-    {
-      id: "beranda",
-      path: "/",
-      icon: Home,
-      title: "Beranda",
-      subtitle: "Halaman utama dan informasi layanan",
-    },
-    {
-      id: "bus",
-      path: "/bus",
-      icon: Bus,
-      title: "Armada Bus",
-      subtitle: "Lihat berbagai pilihan bus kami",
-    },
-    {
-      id: "kontak",
-      path: "/kontak",
-      icon: Phone,
-      title: "Hubungi Kami",
-      subtitle: "Dapatkan penawaran terbaik",
-    },
+    { id: "beranda", path: "/", icon: Home, title: "Beranda", subtitle: "Halaman utama dan informasi layanan" },
+    { id: "daftar-bus", path: "#daftar-bus", icon: Bus, title: "Daftar Bus", subtitle: "Lihat daftar armada di beranda" },
+    { id: "bus", path: "/bus", icon: Bus, title: "Armada Bus", subtitle: "Halaman khusus pencarian bus" },
+    { id: "kontak", path: "#kontak", icon: Phone, title: "Hubungi Kami", subtitle: "Dapatkan penawaran terbaik" },
   ]
+
+  const scrollToId = (id: string) => {
+    if (id === "beranda") {
+      window.scrollTo({ top: 0, behavior: "smooth" })
+      return
+    }
+    const el = document.getElementById(id)
+    if (el) el.scrollIntoView({ behavior: "smooth", block: "start" })
+  }
+
+  const goToSection = (id: string) => {
+    setActiveMenu(id)
+    setOpen(false)
+    if (location.pathname !== "/") {
+      navigate(`/#${id}`)
+      return
+    }
+    scrollToId(id)
+  }
+
+  useEffect(() => {
+    if (location.pathname === "/" && location.hash) {
+      const id = location.hash.replace("#", "")
+      if (id) scrollToId(id)
+    }
+  }, [location.pathname, location.hash])
 
   return (
     <nav className="bg-white fixed z-50 left-0 top-0 w-full shadow-lg">
       <div className="max-w-7xl mx-auto px-4">
         <div className="flex items-center justify-between h-20">
-          <div className="flex items-center gap-2">
+          <button
+            onClick={() => {
+              setActiveMenu("beranda")
+              setOpen(false)
+              if (location.pathname !== "/") navigate("/")
+              else window.scrollTo({ top: 0, behavior: "smooth" })
+            }}
+            className="flex items-center gap-2"
+          >
             <div className="inline-flex h-10 w-10 items-center justify-center rounded-lg bg-linear-to-br from-indigo-600 to-indigo-700 text-white shadow-lg shadow-indigo-500/30">
               <Bus className="w-5 h-5" />
             </div>
-            <div className="flex flex-col leading-tight">
+            <div className="flex flex-col leading-tight text-left">
               <span className="text-base font-bold text-indigo-600">GoBus Charter</span>
               <span className="text-xs text-slate-500">Sewa bus nyaman & aman</span>
             </div>
-          </div>
+          </button>
 
           <div className="flex items-center gap-2">
-            <div className="hidden md:flex items-center gap-2 text-sm font-medium text-slate-600">
-              {menuItems.map((item) => (
-                <Link
-                  key={item.id}
-                  to={item.path}
-                  className="inline-flex items-center gap-2 px-4 py-2 rounded-lg hover:text-indigo-600 hover:bg-indigo-50 transition-all duration-200"
-                  onClick={() => setActiveMenu(item.id)}
-                >
-                  <item.icon className="w-4 h-4" />
-                  <span>{item.title}</span>
-                </Link>
-              ))}
+            <div className="hidden md:flex items-center gap-1.5 text-sm font-medium text-slate-600">
+              {menuItems.map((item) => {
+                if (item.id === "bus") {
+                  return (
+                    <Link
+                      key={item.id}
+                      to={item.path}
+                      onClick={() => setActiveMenu(item.id)}
+                      className={`inline-flex items-center gap-2 px-4 py-2 rounded-lg transition-all duration-200 ${
+                        activeMenu === item.id ? "bg-indigo-50 text-indigo-700" : "hover:text-indigo-600 hover:bg-indigo-50"
+                      }`}
+                    >
+                      <item.icon className="w-4 h-4" />
+                      <span>{item.title}</span>
+                    </Link>
+                  )
+                }
+                return (
+                  <button
+                    key={item.id}
+                    onClick={() => goToSection(item.id)}
+                    className={`inline-flex items-center gap-2 px-4 py-2 rounded-lg transition-all duration-200 ${
+                      activeMenu === item.id ? "bg-indigo-50 text-indigo-700" : "hover:text-indigo-600 hover:bg-indigo-50"
+                    }`}
+                  >
+                    <item.icon className="w-4 h-4" />
+                    <span>{item.title}</span>
+                  </button>
+                )
+              })}
             </div>
 
             <Sheet open={open} onOpenChange={setOpen}>
@@ -70,55 +107,66 @@ export default function Navbar() {
                 <div className="flex-1 overflow-y-auto">
                   <div className="p-6 border-b border-slate-200 bg-linear-to-br from-indigo-50 to-white">
                     <div className="flex items-center justify-between mb-4">
-                      <div className="flex items-center gap-2">
+                      <button
+                        onClick={() => {
+                          setActiveMenu("beranda")
+                          setOpen(false)
+                          if (location.pathname !== "/") navigate("/")
+                          else window.scrollTo({ top: 0, behavior: "smooth" })
+                        }}
+                        className="flex items-center gap-2"
+                      >
                         <div className="inline-flex h-10 w-10 items-center justify-center rounded-lg bg-linear-to-br from-indigo-600 to-indigo-700 text-white shadow-lg shadow-indigo-500/30">
                           <Bus className="w-5 h-5" />
                         </div>
-                        <div className="flex flex-col leading-tight">
+                        <div className="flex flex-col leading-tight text-left">
                           <span className="text-base font-bold text-indigo-600">GoBus Charter</span>
                           <span className="text-xs text-slate-500">Sewa bus nyaman & aman</span>
                         </div>
-                      </div>
+                      </button>
                     </div>
-                    <p className="text-xs text-slate-600 leading-relaxed">
-                      Solusi transportasi terpercaya untuk perjalanan grup Anda
-                    </p>
+                    <p className="text-xs text-slate-600 leading-relaxed">Solusi transportasi terpercaya untuk perjalanan grup Anda</p>
                   </div>
 
                   <div className="p-4 space-y-2">
-                    {menuItems.map((item) => (
-                      <Link
-                        key={item.id}
-                        to={item.path}
-                        onClick={() => {
-                          setActiveMenu(item.id)
-                          setOpen(false)
-                        }}
-                        onMouseEnter={() => setActiveMenu(item.id)}
-                        onMouseLeave={() => setActiveMenu("")}
-                        className={`flex items-start gap-3 rounded-lg px-4 py-3 text-sm font-medium transition-all duration-200 group ${
-                          activeMenu === item.id
-                            ? "bg-indigo-600 text-white shadow-lg shadow-indigo-500/30"
-                            : "text-slate-700 hover:bg-indigo-50"
-                        }`}
-                      >
-                        <item.icon
-                          className={`w-5 h-5 mt-0.5 transition-transform duration-200 ${
-                            activeMenu === item.id ? "scale-110" : "group-hover:scale-110"
-                          }`}
-                        />
-                        <div className="flex flex-col gap-0.5">
-                          <span className="font-semibold">{item.title}</span>
-                          <span
-                            className={`text-xs leading-snug ${
-                              activeMenu === item.id ? "text-indigo-100" : "text-slate-500"
+                    {menuItems.map((item) => {
+                      if (item.id === "bus") {
+                        return (
+                          <Link
+                            key={item.id}
+                            to={item.path}
+                            onClick={() => {
+                              setActiveMenu(item.id)
+                              setOpen(false)
+                            }}
+                            className={`flex items-start gap-3 rounded-lg px-4 py-3 text-sm font-medium transition-all duration-200 group ${
+                              activeMenu === item.id ? "bg-indigo-600 text-white shadow-lg shadow-indigo-500/30" : "text-slate-700 hover:bg-indigo-50"
                             }`}
                           >
-                            {item.subtitle}
-                          </span>
-                        </div>
-                      </Link>
-                    ))}
+                            <item.icon className={`w-5 h-5 mt-0.5 transition-transform duration-200 ${activeMenu === item.id ? "scale-110" : "group-hover:scale-110"}`} />
+                            <div className="flex flex-col gap-0.5">
+                              <span className="font-semibold">{item.title}</span>
+                              <span className={`text-xs leading-snug ${activeMenu === item.id ? "text-indigo-100" : "text-slate-500"}`}>{item.subtitle}</span>
+                            </div>
+                          </Link>
+                        )
+                      }
+                      return (
+                        <button
+                          key={item.id}
+                          onClick={() => goToSection(item.id)}
+                          className={`flex items-start gap-3 rounded-lg px-4 py-3 text-sm font-medium transition-all duration-200 group ${
+                            activeMenu === item.id ? "bg-indigo-600 text-white shadow-lg shadow-indigo-500/30" : "text-slate-700 hover:bg-indigo-50"
+                          }`}
+                        >
+                          <item.icon className={`w-5 h-5 mt-0.5 transition-transform duration-200 ${activeMenu === item.id ? "scale-110" : "group-hover:scale-110"}`} />
+                          <div className="flex flex-col gap-0.5">
+                            <span className="font-semibold">{item.title}</span>
+                            <span className={`text-xs leading-snug ${activeMenu === item.id ? "text-indigo-100" : "text-slate-500"}`}>{item.subtitle}</span>
+                          </div>
+                        </button>
+                      )
+                    })}
                   </div>
                 </div>
 
@@ -155,9 +203,7 @@ export default function Navbar() {
                   </div>
 
                   <div className="pt-4 border-t border-slate-200">
-                    <p className="text-xs text-center text-slate-400">
-                      © 2025 GoBus Charter. All rights reserved.
-                    </p>
+                    <p className="text-xs text-center text-slate-400">© 2025 GoBus Charter. All rights reserved.</p>
                   </div>
                 </div>
               </SheetContent>

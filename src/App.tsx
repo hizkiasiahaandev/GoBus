@@ -1,9 +1,8 @@
 "use client"
 
 import { Routes, Route } from "react-router-dom"
-import BerandaPage from "./main/Home"
+import BerandaPage from "./main/home"
 import BusPage from "./main/Bus"
-import KontakPage from "./main/kontak"
 import BusResultPage from "./main/ResultBus"
 import BusDetailPage from "./main/BusDetails"
 import PaymentSuccessPage from "./main/Payments"
@@ -20,7 +19,6 @@ export default function App() {
           <Route path="/bus/result" element={<BusResultPage />} />
           <Route path="/bus/result/:id" element={<BusDetailPage />} />
           <Route path="/payment-success" element={<PaymentSuccessPage />} />
-          <Route path="/kontak" element={<KontakPage />} />
         </Routes>
       </div>
       <Footer />
