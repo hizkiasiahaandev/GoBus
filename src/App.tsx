@@ -5,7 +5,9 @@ import BerandaPage from "./main/home"
 import BusPage from "./main/home/Bus"
 import BusResultPage from "./main/ResultBus"
 import BusDetailPage from "./main/BusDetails"
-import PaymentSuccessPage from "./main/Payments"
+import OrderSuccessPage from "./main/Orders"
+import ConfirmPaymentPage from "./main/ConfirmPayments"
+import InvoicePage from "./main/InvoicePage"
 import Navbar from "./pages/Navbar"
 import Footer from "./pages/Footer"
 export default function App() {
@@ -18,7 +20,9 @@ export default function App() {
           <Route path="/bus" element={<BusPage />} />
           <Route path="/bus/result" element={<BusResultPage />} />
           <Route path="/bus/result/:id" element={<BusDetailPage />} />
-          <Route path="/payment-success" element={<PaymentSuccessPage />} />
+          <Route path="/pemesanan-berhasil" element={<OrderSuccessPage />} />
+          <Route path="/konfirmasi-pembayaran" element={<ConfirmPaymentPage />} />
+          <Route path="/invoice" element={<InvoicePage  />} />
         </Routes>
       </div>
       <Footer />

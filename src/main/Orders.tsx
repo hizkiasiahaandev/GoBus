@@ -2,10 +2,12 @@
 
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
-import { Check, Printer, Download } from "lucide-react"
-import qrCode from "@/assets/qr_ticket.png"
+import { Check, Printer, Download, CreditCard, Info } from "lucide-react"
+import { useNavigate } from "react-router-dom"
 
-export default function PaymentSuccessPage() {
+export default function OrderSuccessPage() {
+  const navigate = useNavigate()
+
   return (
     <main className="bg-white antialiased py-20">
       <div className="max-w-7xl mx-auto px-4 space-y-10">
@@ -108,22 +110,21 @@ export default function PaymentSuccessPage() {
 
           <Card className="border-slate-200 rounded-lg shadow-sm">
             <CardContent className="p-6 flex flex-col items-center gap-5">
-              <div className="space-y-2 text-center">
-                <p className="text-sm font-semibold text-slate-900">
-                  QR Referensi Pemesanan
-                </p>
-                <p className="text-[0.75rem] text-slate-500">
-                  Simpan kode QR ini sebagai tanda bukti permintaan pemesanan. Admin dapat memindainya
-                  untuk melihat detail rombongan Anda di sistem.
-                </p>
+              <div className="flex items-center gap-2 rounded-full bg-indigo-50 border border-indigo-100 px-3 py-1">
+                <Info className="w-4 h-4 text-indigo-600" />
+                <span className="text-[0.7rem] font-medium text-indigo-700">
+                  Langkah selanjutnya
+                </span>
               </div>
 
-              <div className="rounded-xl border border-slate-200 bg-slate-50 p-4">
-                <img
-                  src={qrCode}
-                  alt="QR Referensi Pemesanan"
-                  className="w-32 h-32 md:w-40 md:h-40 object-contain"
-                />
+              <div className="space-y-2 text-center">
+                <p className="text-sm font-semibold text-slate-900">
+                  Simpan referensi pemesanan Anda
+                </p>
+                <p className="text-[0.75rem] text-slate-500 max-w-sm">
+                  Simpan ringkasan permintaan ini sebagai arsip. Setelah menerima penawaran dari admin,
+                  Anda bisa melakukan transfer dan mengirim konfirmasi pembayaran melalui halaman khusus.
+                </p>
               </div>
 
               <div className="flex flex-col gap-3 w-full">
@@ -135,11 +136,19 @@ export default function PaymentSuccessPage() {
                   <Download className="w-4 h-4" />
                   <span>Download konfirmasi</span>
                 </Button>
+                <Button
+                  type="button"
+                  onClick={() => navigate("/konfirmasi-pembayaran")}
+                  className="w-full h-10 rounded-lg bg-white border border-indigo-200 text-indigo-700 hover:bg-indigo-50 text-sm font-semibold inline-flex items-center justify-center gap-2 shadow-md shadow-indigo-100"
+                >
+                  <CreditCard className="w-4 h-4" />
+                  <span>Saya sudah melakukan transfer</span>
+                </Button>
               </div>
 
               <p className="text-[0.7rem] text-slate-400 text-center">
-                Tim GoBus akan menghubungi PIC untuk konfirmasi, penyesuaian jadwal, serta instruksi pembayaran.
-                Pastikan nomor WhatsApp dan email yang Anda isi aktif dan mudah dihubungi.
+                Setelah menerima penawaran dan instruksi pembayaran dari admin, lakukan transfer lalu konfirmasi
+                melalui tombol “Saya sudah melakukan transfer” di atas agar tim GoBus dapat segera memverifikasi.
               </p>
             </CardContent>
           </Card>

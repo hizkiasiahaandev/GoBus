@@ -36,7 +36,7 @@ export default function BusDetailPage() {
 
   const handleSubmit = (e: any) => {
     e.preventDefault()
-    navigate("/payment-success")
+    navigate("/pemesanan-berhasil")
   }
 
   return (
