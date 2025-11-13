@@ -204,7 +204,7 @@ export default function DaftarBusSection() {
                     <ImageIcon className="w-3.5 h-3.5" />
                     <span>{bus.kapasitas}</span>
                   </div>
-                  <div className="pointer-events-none absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-black/20 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+                  <div className="pointer-events-none absolute inset-x-0 bottom-0 h-16 bg-linear-to-t from-black/20 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
                 </div>
 
                 <div className="p-4 space-y-3">
@@ -223,7 +223,7 @@ export default function DaftarBusSection() {
                     </div>
                   </div>
 
-                  <p className="text-xs text-slate-500 leading-relaxed min-h-[40px]">{bus.keterangan}</p>
+                  <p className="text-xs text-slate-500 leading-relaxed min-h-10">{bus.keterangan}</p>
 
                   <div className="flex gap-3">
                     <span className="w-full h-10 rounded-lg shadow-lg bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-semibold inline-flex items-center justify-center gap-2">
@@ -239,7 +239,7 @@ export default function DaftarBusSection() {
 
         {open && (
           <div
-            className="fixed inset-0 z-[100] flex items-center justify-center"
+            className="fixed inset-0 z-100 flex items-center justify-center"
             onClick={(e) => {
               if (e.target === e.currentTarget) setOpen(false)
             }}
@@ -267,7 +267,7 @@ export default function DaftarBusSection() {
                         setLightboxIndex(idx)
                         setLightboxOpen(true)
                       }}
-                      className="group relative aspect-[4/3] rounded-xl overflow-hidden border border-slate-200"
+                      className="group relative aspect-4/3 rounded-xl overflow-hidden border border-slate-200"
                     >
                       <img src={item.src} alt={`${selectedBus?.nama} • ${item.label}`} className="w-full h-full object-cover transition group-hover:scale-[1.02]" />
                       <span className="absolute left-2 bottom-2 rounded-md bg-black/60 text-white text-[0.7rem] px-2 py-0.5">{item.label}</span>
@@ -281,7 +281,7 @@ export default function DaftarBusSection() {
 
         {open && lightboxOpen && gallery.length > 0 && current && (
           <div
-            className="fixed inset-0 z-[110] flex items-center justify-center"
+            className="fixed inset-0 z-110 flex items-center justify-center"
             onClick={(e) => {
               if (e.target === e.currentTarget) setLightboxOpen(false)
             }}

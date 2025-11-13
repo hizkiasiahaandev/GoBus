@@ -5,7 +5,7 @@ import WhyJourneySection from "./WhyJourneySection"
 import WhyChooseSection from "./WhyChooseSection"
 import FAQSection from "./Faq"
 import DaftarBusSection from "./DaftarBus"
-import KontakPage from "./kontak"
+import KontakPage from "./Kontak"
 
 export default function BerandaPage() {
   return (

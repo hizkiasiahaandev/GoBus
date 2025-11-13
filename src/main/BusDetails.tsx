@@ -5,7 +5,7 @@ import { Card, CardContent } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { useParams, useNavigate } from "react-router-dom"
 import { buses } from "./ResultBus"
-import { ArrowLeft, CreditCard, Wallet, Smartphone, Bus } from "lucide-react"
+import { ArrowLeft, CreditCard, Wallet, Smartphone } from "lucide-react"
 
 export default function BusDetailPage() {
   const { id } = useParams()

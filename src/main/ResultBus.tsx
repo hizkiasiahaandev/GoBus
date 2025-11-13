@@ -3,7 +3,7 @@
 import { Button } from "@/components/ui/button"
 import { Card } from "@/components/ui/card"
 import busThumb from "@/assets/img/bus1.png"
-import { Star, Bus, SlidersHorizontal, MessageCircle } from "lucide-react"
+import { Star, MessageCircle } from "lucide-react"
 import { useNavigate } from "react-router-dom"
 
 export const buses = [
