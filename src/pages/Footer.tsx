@@ -1,9 +1,29 @@
 "use client"
 
 import { Facebook, Instagram, Youtube, MapPin, Phone, Mail } from "lucide-react"
+import { useLocation, useNavigate } from "react-router-dom"
 
 export default function Footer() {
   const currentYear = new Date().getFullYear()
+  const navigate = useNavigate()
+  const location = useLocation()
+
+  const scrollToId = (id: string) => {
+    if (id === "beranda") {
+      window.scrollTo({ top: 0, behavior: "smooth" })
+      return
+    }
+    const el = document.getElementById(id)
+    if (el) el.scrollIntoView({ behavior: "smooth", block: "start" })
+  }
+
+  const handleNavClick = (id: string) => {
+    if (location.pathname !== "/") {
+      navigate(`/#${id}`)
+      return
+    }
+    scrollToId(id)
+  }
 
   return (
     <footer className="bg-indigo-600 text-white mt-20">
@@ -16,7 +36,6 @@ export default function Footer() {
               Trusted Travel Partner
             </span>
           </div>
-
 
           <h2 className="text-2xl md:text-3xl font-bold tracking-tight text-white">
             Sewa bus rombongan lebih mudah, rapi, dan terencana.
@@ -55,11 +74,51 @@ export default function Footer() {
         <div className="space-y-4">
           <h3 className="text-sm font-semibold tracking-wide uppercase">Navigasi</h3>
           <ul className="space-y-2 text-sm text-indigo-100">
-            <li><a href="#beranda" className="hover:text-white transition-colors">Beranda</a></li>
-            <li><a href="#daftar-bus" className="hover:text-white transition-colors">Daftar Bus</a></li>
-            <li><a href="#mengapamemilihkami" className="hover:text-white transition-colors">Mengapa GoBus</a></li>
-            <li><a href="/kontak" className="hover:text-white transition-colors">Kontak</a></li>
-            <li><a href="#faq" className="hover:text-white transition-colors">FAQ</a></li>
+            <li>
+              <button
+                type="button"
+                onClick={() => handleNavClick("beranda")}
+                className="hover:text-white transition-colors text-left"
+              >
+                Beranda
+              </button>
+            </li>
+            <li>
+              <button
+                type="button"
+                onClick={() => handleNavClick("daftar-bus")}
+                className="hover:text-white transition-colors text-left"
+              >
+                Daftar Bus
+              </button>
+            </li>
+            <li>
+              <button
+                type="button"
+                onClick={() => handleNavClick("mengapamemilihkami")}
+                className="hover:text-white transition-colors text-left"
+              >
+                Mengapa GoBus
+              </button>
+            </li>
+            <li>
+              <button
+                type="button"
+                onClick={() => handleNavClick("kontak")}
+                className="hover:text-white transition-colors text-left"
+              >
+                Kontak
+              </button>
+            </li>
+            <li>
+              <button
+                type="button"
+                onClick={() => handleNavClick("faq")}
+                className="hover:text-white transition-colors text-left"
+              >
+                FAQ
+              </button>
+            </li>
           </ul>
         </div>
 
