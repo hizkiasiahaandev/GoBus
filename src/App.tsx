@@ -2,7 +2,7 @@
 
 import { Routes, Route } from "react-router-dom"
 import BerandaPage from "./main/home"
-import BusPage from "./main/Bus"
+import BusPage from "./main/home/Bus"
 import BusResultPage from "./main/ResultBus"
 import BusDetailPage from "./main/BusDetails"
 import PaymentSuccessPage from "./main/Payments"
