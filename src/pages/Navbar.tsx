@@ -125,10 +125,12 @@ export default function Navbar() {
                         </div>
                       </button>
                     </div>
-                    <p className="text-xs text-slate-600 leading-relaxed">Solusi transportasi terpercaya untuk perjalanan grup Anda</p>
+                    <p className="text-xs text-slate-600 leading-relaxed text-left">
+                      Solusi transportasi terpercaya untuk perjalanan grup Anda
+                    </p>
                   </div>
 
-                  <div className="p-4 space-y-2">
+                  <div className="p-4 space-y-2 text-left">
                     {menuItems.map((item) => {
                       if (item.id === "bus") {
                         return (
@@ -139,14 +141,24 @@ export default function Navbar() {
                               setActiveMenu(item.id)
                               setOpen(false)
                             }}
-                            className={`flex items-start gap-3 rounded-lg px-4 py-3 text-sm font-medium transition-all duration-200 group ${
+                            className={`flex items-start gap-3 w-full justify-start rounded-lg px-4 py-3 text-sm font-medium transition-all duration-200 group ${
                               activeMenu === item.id ? "bg-indigo-600 text-white shadow-lg shadow-indigo-500/30" : "text-slate-700 hover:bg-indigo-50"
                             }`}
                           >
-                            <item.icon className={`w-5 h-5 mt-0.5 transition-transform duration-200 ${activeMenu === item.id ? "scale-110" : "group-hover:scale-110"}`} />
-                            <div className="flex flex-col gap-0.5">
+                            <item.icon
+                              className={`w-5 h-5 mt-0.5 transition-transform duration-200 ${
+                                activeMenu === item.id ? "scale-110" : "group-hover:scale-110"
+                              }`}
+                            />
+                            <div className="flex flex-col gap-0.5 text-left">
                               <span className="font-semibold">{item.title}</span>
-                              <span className={`text-xs leading-snug ${activeMenu === item.id ? "text-indigo-100" : "text-slate-500"}`}>{item.subtitle}</span>
+                              <span
+                                className={`text-xs leading-snug ${
+                                  activeMenu === item.id ? "text-indigo-100" : "text-slate-500"
+                                }`}
+                              >
+                                {item.subtitle}
+                              </span>
                             </div>
                           </Link>
                         )
@@ -155,14 +167,24 @@ export default function Navbar() {
                         <button
                           key={item.id}
                           onClick={() => goToSection(item.id)}
-                          className={`flex items-start gap-3 rounded-lg px-4 py-3 text-sm font-medium transition-all duration-200 group ${
+                          className={`flex items-start gap-3 w-full justify-start rounded-lg px-4 py-3 text-sm font-medium transition-all duration-200 group ${
                             activeMenu === item.id ? "bg-indigo-600 text-white shadow-lg shadow-indigo-500/30" : "text-slate-700 hover:bg-indigo-50"
                           }`}
                         >
-                          <item.icon className={`w-5 h-5 mt-0.5 transition-transform duration-200 ${activeMenu === item.id ? "scale-110" : "group-hover:scale-110"}`} />
-                          <div className="flex flex-col gap-0.5">
+                          <item.icon
+                            className={`w-5 h-5 mt-0.5 transition-transform duration-200 ${
+                              activeMenu === item.id ? "scale-110" : "group-hover:scale-110"
+                            }`}
+                          />
+                          <div className="flex flex-col gap-0.5 text-left">
                             <span className="font-semibold">{item.title}</span>
-                            <span className={`text-xs leading-snug ${activeMenu === item.id ? "text-indigo-100" : "text-slate-500"}`}>{item.subtitle}</span>
+                            <span
+                              className={`text-xs leading-snug ${
+                                activeMenu === item.id ? "text-indigo-100" : "text-slate-500"
+                              }`}
+                            >
+                              {item.subtitle}
+                            </span>
                           </div>
                         </button>
                       )
@@ -171,7 +193,7 @@ export default function Navbar() {
                 </div>
 
                 <div className="border-t border-slate-200 bg-linear-to-br from-slate-50 to-white p-6 space-y-4">
-                  <div className="space-y-3">
+                  <div className="space-y-3 text-left">
                     <div className="flex items-start gap-3 text-xs">
                       <MapPin className="w-4 h-4 text-indigo-600 mt-0.5 shrink-0" />
                       <div>
