@@ -180,7 +180,7 @@ export default function DaftarBusSection() {
             <span className="inline-flex h-2.5 w-2.5 rounded-full bg-indigo-500 shadow-[0_0_0_4px] shadow-indigo-400/30 animate-pulse" />
             <Bus className="w-4 h-4 text-indigo-600" />
             <span>Daftar Armada GoBus</span>
-            <span className="px-2 py-0.5 rounded-md bg-indigo-100 text-[0.65rem] uppercase tracking-wide text-indigo-700 border border-indigo-200 font-bold">Pilih Bus</span>
+            <span className="px-2 py-0.5 rounded-lg bg-indigo-100 text-[0.65rem] uppercase tracking-wide text-indigo-700 border border-indigo-200 font-bold">Pilih Bus</span>
           </div>
           <h2 className="text-2xl md:text-3xl font-bold text-indigo-600">Pilih bus yang sesuai dengan kebutuhan rombongan Anda</h2>
           <p className="text-sm md:text-base text-slate-600 max-w-2xl">Lihat galeri foto armada.</p>
@@ -188,7 +188,7 @@ export default function DaftarBusSection() {
 
         <div className="grid gap-5 md:gap-6 md:grid-cols-2 lg:grid-cols-3">
           {daftarBus.map((bus) => (
-            <div key={bus.id} className="group relative overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-[0_10px_30px_rgba(15,23,42,0.04)] transition hover:-translate-y-0.5 hover:shadow-[0_12px_36px_rgba(15,23,42,0.07)]">
+            <div key={bus.id} className="group relative overflow-hidden rounded-lg border border-slate-200 bg-white shadow-[0_10px_30px_rgba(15,23,42,0.04)] transition hover:-translate-y-0.5 hover:shadow-[0_12px_36px_rgba(15,23,42,0.07)]">
               <button
                 onClick={() => {
                   setSelectedBus(bus)
@@ -245,7 +245,7 @@ export default function DaftarBusSection() {
             }}
           >
             <div className="absolute inset-0 bg-black/40 backdrop-blur-sm" />
-            <div className="relative max-w-4xl w-[94%] rounded-2xl bg-white shadow-2xl border border-slate-200 p-0 overflow-hidden">
+            <div className="relative max-w-4xl w-[94%] rounded-lg bg-white shadow-2xl border border-slate-200 p-0 overflow-hidden">
               <div className="px-5 md:px-6 pt-5 md:pt-6 pb-4">
                 <div className="flex items-start justify-between gap-3">
                   <h3 className="text-base md:text-lg font-semibold text-slate-900">Galeri • {selectedBus?.nama}</h3>
@@ -267,10 +267,10 @@ export default function DaftarBusSection() {
                         setLightboxIndex(idx)
                         setLightboxOpen(true)
                       }}
-                      className="group relative aspect-4/3 rounded-xl overflow-hidden border border-slate-200"
+                      className="group relative aspect-4/3 rounded-lg overflow-hidden border border-slate-200"
                     >
                       <img src={item.src} alt={`${selectedBus?.nama} • ${item.label}`} className="w-full h-full object-cover transition group-hover:scale-[1.02]" />
-                      <span className="absolute left-2 bottom-2 rounded-md bg-black/60 text-white text-[0.7rem] px-2 py-0.5">{item.label}</span>
+                      <span className="absolute left-2 bottom-2 rounded-lg bg-black/60 text-white text-[0.7rem] px-2 py-0.5">{item.label}</span>
                     </button>
                   ))}
                 </div>

@@ -9,7 +9,7 @@ import { MapPin, Phone, Mail, Clock, MessageCircle, Send } from "lucide-react"
 
 export default function KontakPage() {
   return (
-    <main className="bg-white antialiased py-20">
+    <main className="bg-white antialiased py-20" id="kontak">
       <div className="max-w-7xl mx-auto px-4 lg:px-6">
         <div className="grid lg:grid-cols-2 gap-12 items-start">
           <div className="space-y-6">
