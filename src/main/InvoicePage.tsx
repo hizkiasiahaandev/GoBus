@@ -15,24 +15,21 @@ export default function InvoicePage() {
   const statusConfig = {
     UNPAID: {
       label: "Menunggu pembayaran",
-      badgeClass:
-        "bg-amber-50 border border-amber-100 text-amber-700",
+      badgeClass: "bg-amber-50 border border-amber-100 text-amber-700",
       textClass: "text-amber-700",
       desc: "Silakan lakukan pembayaran sesuai nominal di bawah, lalu konfirmasi melalui halaman konfirmasi pembayaran.",
     },
     PARTIAL: {
       label: "DP diterima",
-      badgeClass:
-        "bg-sky-50 border border-sky-100 text-sky-700",
+      badgeClass: "bg-sky-50 border border-sky-100 text-sky-700",
       textClass: "text-sky-700",
       desc: "DP sudah diterima. Mohon selesaikan pelunasan sebelum tanggal keberangkatan yang disepakati.",
     },
     PAID: {
       label: "Lunas",
-      badgeClass:
-        "bg-emerald-50 border border-emerald-100 text-emerald-700",
+      badgeClass: "bg-emerald-50 border border-emerald-100 text-emerald-700",
       textClass: "text-emerald-700",
-      desc: "Pembayaran untuk invoice ini sudah lunas. Terima kasih, tim GoBus akan menyiapkan armada sesuai jadwal.",
+      desc: "Pembayaran untuk invoice ini sudah lunas. Terima kasih, tim Mandiri Express akan menyiapkan armada sesuai jadwal.",
     },
   }[status]
 
@@ -54,10 +51,10 @@ export default function InvoicePage() {
               Invoice pemesanan
             </p>
             <h1 className="text-xl md:text-2xl font-semibold text-slate-900">
-              INV-GBUS-2025-00123
+              INV-ME-2025-00123
             </h1>
             <p className="text-xs md:text-sm text-slate-600">
-              Invoice untuk pemesanan charter bus rombongan GoBus berdasarkan permintaan yang telah Anda kirim.
+              Invoice untuk pemesanan charter bus rombongan Mandiri Express berdasarkan permintaan yang telah Anda kirim.
             </p>
           </div>
 
@@ -94,12 +91,12 @@ export default function InvoicePage() {
               </div>
               <div className="space-y-2 md:text-right">
                 <p className="text-[0.7rem] uppercase tracking-[0.14em] text-slate-500 font-semibold">
-                  Detail GoBus
+                  Detail Mandiri Express
                 </p>
-                <p className="font-semibold text-slate-900">PT GoBus Indonesia</p>
-                <p className="text-slate-600">Layanan Carter Bus Rombongan</p>
+                <p className="font-semibold text-slate-900">PT Mandiri Express Indonesia</p>
+                <p className="text-slate-600">Layanan Charter Bus Rombongan</p>
                 <p className="text-slate-500">
-                  admin@gobus.id
+                  admin@mandiriexpress.id
                   <br />
                   +62 812-0000-0000
                 </p>
@@ -143,7 +140,7 @@ export default function InvoicePage() {
                   <tbody>
                     <tr className="border-b border-slate-100">
                       <td className="px-3 py-2">
-                        <p className="font-medium text-slate-900">Sewa GoBus Executive</p>
+                        <p className="font-medium text-slate-900">Sewa Mandiri Express Executive</p>
                         <p className="text-[0.7rem] text-slate-500">
                           Termasuk sopir, BBM, dan fasilitas standar selama perjalanan
                         </p>
@@ -172,7 +169,7 @@ export default function InvoicePage() {
                   <p>{statusConfig.desc}</p>
                   <p>
                     Setelah pembayaran terverifikasi, status invoice akan diperbarui secara otomatis oleh admin
-                    melalui sistem internal GoBus.
+                    melalui sistem internal Mandiri Express.
                   </p>
                 </div>
                 <div className="w-full md:w-auto space-y-1">
@@ -186,7 +183,7 @@ export default function InvoicePage() {
                   </div>
                   <div className="flex items-center justify-between text-sm border-t border-slate-200 pt-2 mt-1">
                     <span className="font-semibold text-slate-900">Total tagihan</span>
-                    <span className="text-lg font-bold text-indigo-600">Rp 5.000.000</span>
+                    <span className="text-lg font-bold text-red-600">Rp 5.000.000</span>
                   </div>
                   <div className="flex items-center justify-between text-xs pt-1">
                     <span className="text-slate-600">Status pembayaran</span>
@@ -215,7 +212,7 @@ export default function InvoicePage() {
             </Button>
             <Button
               type="button"
-              className="h-10 rounded-lg px-4 text-xs font-semibold inline-flex items-center justify-center gap-2 bg-indigo-600 hover:bg-indigo-700 text-white shadow-md"
+              className="h-10 rounded-lg px-4 text-xs font-semibold inline-flex items-center justify-center gap-2 bg-red-600 hover:bg-red-700 text-white shadow-md shadow-red-300"
             >
               <Download className="w-4 h-4" />
               <span>Download PDF</span>

@@ -8,6 +8,32 @@ import { useParams, useNavigate } from "react-router-dom"
 import { buses } from "./ResultBus"
 import { ArrowLeft, SendHorizonal } from "lucide-react"
 
+type BusStatus = "aktif" | "operasional" | "non-aktif"
+
+const statusConfig: Record<
+  BusStatus,
+  { label: string; badgeClass: string; dotClass: string; note: string }
+> = {
+  operasional: {
+    label: "Sedang beroperasi",
+    badgeClass: "bg-emerald-50 border-emerald-100 text-emerald-700",
+    dotClass: "bg-emerald-500",
+    note: "Sedang digunakan untuk perjalanan",
+  },
+  aktif: {
+    label: "Aktif & siap dipesan",
+    badgeClass: "bg-sky-50 border-sky-100 text-sky-700",
+    dotClass: "bg-sky-500",
+    note: "Tersedia untuk jadwal berikutnya",
+  },
+  "non-aktif": {
+    label: "Non-aktif / maintenance",
+    badgeClass: "bg-slate-50 border-slate-200 text-slate-600",
+    dotClass: "bg-slate-400",
+    note: "Belum dapat digunakan sementara",
+  },
+}
+
 export default function BusDetailPage() {
   const { id } = useParams()
   const navigate = useNavigate()
@@ -31,10 +57,9 @@ export default function BusDetailPage() {
     )
   }
 
-  const rawHarga = bus.harga.replace(/[^\d]/g, "")
-  const hargaSewa = rawHarga ? Number(rawHarga) : 0
+  const statusInfo = statusConfig[bus.status as BusStatus]
 
-  const handleSubmit = (e: any) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     navigate("/pemesanan-berhasil")
   }
@@ -54,26 +79,25 @@ export default function BusDetailPage() {
         <div className="flex flex-col gap-3 md:flex-row md:items-start md:justify-between">
           <div className="space-y-2">
             <p className="text-[0.7rem] uppercase tracking-[0.16em] text-slate-500 font-semibold">
-              Form pemesanan GoBus
+              Form pemesanan Mandiri Express
             </p>
             <h1 className="text-xl md:text-2xl font-semibold text-slate-900 flex flex-wrap items-center gap-2">
               {bus.nama}
-              <span className="inline-flex items-center gap-1 rounded-full bg-indigo-50 px-2 py-0.5 border border-indigo-100 text-[0.7rem] font-medium text-indigo-700">
+              <span className="inline-flex items-center gap-1 rounded-full bg-red-50 px-2 py-0.5 border border-red-100 text-[0.7rem] font-medium text-red-700">
                 {bus.kelas}
               </span>
             </h1>
             <p className="text-xs md:text-sm text-slate-600">
-              Lengkapi data pemesan dan detail perjalanan. Tim GoBus akan mengonfirmasi ketersediaan dan harga final melalui WhatsApp.
+              Lengkapi data penanggung jawab rombongan dan detail perjalanan. Tim Mandiri Express
+              akan mengonfirmasi ketersediaan armada dan harga charter final melalui WhatsApp.
             </p>
           </div>
 
           <div className="text-right space-y-1">
-            <p className="text-[0.75rem] text-slate-500">Estimasi harga sewa</p>
-            <p className="text-xl md:text-2xl font-semibold text-indigo-600">
-              {hargaSewa.toLocaleString("id-ID", { style: "currency", currency: "IDR" })}
-            </p>
+            <p className="text-[0.75rem] text-slate-500">Harga charter estimasi</p>
+            <p className="text-xl md:text-2xl font-semibold text-slate-900">--</p>
             <p className="text-[0.7rem] text-slate-400">
-              Estimasi awal untuk 1 armada per perjalanan
+              Harga akan diinformasikan admin berdasarkan rute & durasi sewa
             </p>
           </div>
         </div>
@@ -101,7 +125,7 @@ export default function BusDetailPage() {
                       id="nama"
                       required
                       placeholder="Contoh: Cahaya Putri"
-                      className="h-10 text-sm border-slate-300 focus-visible:ring-indigo-500"
+                      className="h-10 text-sm border-slate-300 focus-visible:ring-red-500"
                     />
                   </div>
                   <div className="space-y-2">
@@ -110,20 +134,20 @@ export default function BusDetailPage() {
                       id="whatsapp"
                       required
                       placeholder="Contoh: 0812xxxxxxxx"
-                      className="h-10 text-sm border-slate-300 focus-visible:ring-indigo-500"
+                      className="h-10 text-sm border-slate-300 focus-visible:ring-red-500"
                     />
                   </div>
                 </div>
 
                 <div className="grid gap-4 md:grid-cols-2">
                   <div className="space-y-2">
-                    <Label htmlFor="email">Email untuk e-ticket</Label>
+                    <Label htmlFor="email">Email untuk dokumen pemesanan</Label>
                     <Input
                       id="email"
                       type="email"
                       required
                       placeholder="nama@email.com"
-                      className="h-10 text-sm border-slate-300 focus-visible:ring-indigo-500"
+                      className="h-10 text-sm border-slate-300 focus-visible:ring-red-500"
                     />
                   </div>
                   <div className="space-y-2">
@@ -131,7 +155,7 @@ export default function BusDetailPage() {
                     <Input
                       id="instansi"
                       placeholder="Perusahaan, kampus, atau nama rombongan"
-                      className="h-10 text-sm border-slate-300 focus-visible:ring-indigo-500"
+                      className="h-10 text-sm border-slate-300 focus-visible:ring-red-500"
                     />
                   </div>
                 </div>
@@ -156,7 +180,7 @@ export default function BusDetailPage() {
                       id="tanggal"
                       type="date"
                       required
-                      className="h-10 text-sm border-slate-300 focus-visible:ring-indigo-500"
+                      className="h-10 text-sm border-slate-300 focus-visible:ring-red-500"
                     />
                   </div>
                   <div className="space-y-2">
@@ -167,7 +191,7 @@ export default function BusDetailPage() {
                       min={1}
                       required
                       placeholder="Contoh: 3"
-                      className="h-10 text-sm border-slate-300 focus-visible:ring-indigo-500"
+                      className="h-10 text-sm border-slate-300 focus-visible:ring-red-500"
                     />
                   </div>
                 </div>
@@ -179,7 +203,7 @@ export default function BusDetailPage() {
                       id="jemput"
                       required
                       placeholder="Contoh: Medan Sunggal, depan kampus"
-                      className="h-10 text-sm border-slate-300 focus-visible:ring-indigo-500"
+                      className="h-10 text-sm border-slate-300 focus-visible:ring-red-500"
                     />
                   </div>
                   <div className="space-y-2">
@@ -188,7 +212,7 @@ export default function BusDetailPage() {
                       id="turun"
                       required
                       placeholder="Contoh: Bandar Lampung, Rajabasa"
-                      className="h-10 text-sm border-slate-300 focus-visible:ring-indigo-500"
+                      className="h-10 text-sm border-slate-300 focus-visible:ring-red-500"
                     />
                   </div>
                 </div>
@@ -201,7 +225,7 @@ export default function BusDetailPage() {
                     min={1}
                     required
                     placeholder="Contoh: 35 orang"
-                    className="h-10 text-sm border-slate-300 focus-visible:ring-indigo-500"
+                    className="h-10 text-sm border-slate-300 focus-visible:ring-red-500"
                   />
                 </div>
 
@@ -211,7 +235,7 @@ export default function BusDetailPage() {
                     id="catatan"
                     rows={3}
                     placeholder="Contoh: Butuh stop makan 2x, rombongan keluarga, ingin kursi reclining, dll."
-                    className="w-full rounded-md border border-slate-300 text-sm px-3 py-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 resize-none"
+                    className="w-full rounded-md border border-slate-300 text-sm px-3 py-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500 resize-none"
                   />
                 </div>
               </CardContent>
@@ -234,29 +258,34 @@ export default function BusDetailPage() {
                       Berangkat {bus.berangkatJam} • Tiba {bus.tibaJam} • Durasi {bus.durasi}
                     </p>
                   </div>
-                  <span className="inline-flex items-center rounded-full bg-emerald-50 px-2 py-1 border border-emerald-100 text-[0.7rem] font-medium text-emerald-700">
-                    Rating {bus.rating.toFixed(1)}
-                  </span>
+
+                  <div
+                    className={`inline-flex items-center justify-center px-2 py-1 rounded-lg border text-[0.7rem] font-semibold gap-1 ${statusInfo.badgeClass}`}
+                  >
+                    <span className={`h-1.5 w-1.5 rounded-full ${statusInfo.dotClass}`} />
+                    <span>{statusInfo.label}</span>
+                  </div>
                 </div>
 
                 <div className="space-y-2 text-xs md:text-sm">
                   <div className="flex justify-between">
-                    <span className="text-slate-600">Harga sewa estimasi</span>
-                    <span className="text-slate-900">
-                      {hargaSewa.toLocaleString("id-ID", { style: "currency", currency: "IDR" })}
+                    <span className="text-slate-600">Status armada</span>
+                    <span className="text-slate-800 text-right hidden lg:block">
+                      {statusInfo.note}
                     </span>
                   </div>
                 </div>
 
                 <div className="pt-2 border-t border-slate-200 flex justify-between items-center">
-                  <span className="text-sm font-semibold text-slate-900">Perkiraan total</span>
-                  <span className="text-sm md:text-lg font-bold text-indigo-600">
-                    {hargaSewa.toLocaleString("id-ID", { style: "currency", currency: "IDR" })}
+                  <span className="text-sm font-semibold text-slate-900">
+                    Perkiraan harga charter
                   </span>
+                  <span className="text-sm md:text-lg font-bold text-slate-900">--</span>
                 </div>
 
                 <p className="text-[0.7rem] text-slate-400">
-                  Nominal final dapat menyesuaikan durasi sewa, rute, dan kebutuhan tambahan. Admin akan mengonfirmasi detailnya sebelum pembayaran.
+                  Harga final akan dihitung oleh admin Mandiri Express berdasarkan rute, durasi
+                  sewa, dan kebutuhan tambahan yang Anda sampaikan di form.
                 </p>
               </CardContent>
             </Card>
@@ -266,15 +295,18 @@ export default function BusDetailPage() {
                 <p className="font-semibold text-slate-900">Catatan penting</p>
                 <ul className="space-y-1 text-slate-600">
                   <li>Pengisian data yang jelas membantu proses penawaran lebih cepat.</li>
-                  <li>Tim GoBus akan menghubungi via WhatsApp setelah form dikirim.</li>
-                  <li>Pembayaran dapat dilakukan via transfer bank, virtual account, atau metode lain yang disepakati.</li>
+                  <li>Tim Mandiri Express akan menghubungi via WhatsApp setelah form dikirim.</li>
+                  <li>
+                    Metode pembayaran dapat disepakati bersama (transfer bank, VA, atau opsi lain
+                    yang tersedia).
+                  </li>
                 </ul>
               </CardContent>
             </Card>
 
             <Button
               type="submit"
-              className="w-full h-11 md:h-12 rounded-lg text-sm md:text-base font-semibold bg-indigo-600 hover:bg-indigo-700 shadow-lg shadow-indigo-500/30 inline-flex items-center justify-center gap-2"
+              className="w-full h-11 md:h-12 rounded-lg text-sm md:text-base font-semibold bg-red-600 hover:bg-red-700 shadow-lg shadow-red-500/30 inline-flex items-center justify-center gap-2"
             >
               <SendHorizonal className="w-4 h-4" />
               <span>Kirim permintaan pemesanan</span>

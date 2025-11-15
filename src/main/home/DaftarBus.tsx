@@ -19,8 +19,8 @@ type BusItem = {
 
 const daftarBus: BusItem[] = [
   {
-    id: "GB-EX-01",
-    nama: "GoBus Executive",
+    id: "ME-EX-01",
+    nama: "Mandiri Express Executive",
     kapasitas: "45 seat",
     tipe: "Executive",
     keterangan: "Nyaman untuk acara kantor dan perjalanan bisnis jarak jauh.",
@@ -33,8 +33,8 @@ const daftarBus: BusItem[] = [
     ],
   },
   {
-    id: "GB-EX-02",
-    nama: "GoBus Executive Plus",
+    id: "ME-EX-02",
+    nama: "Mandiri Express Executive Plus",
     kapasitas: "45 seat",
     tipe: "Executive",
     keterangan: "Kursi reclining, legroom lega, AC dingin, perjalanan mulus.",
@@ -47,8 +47,8 @@ const daftarBus: BusItem[] = [
     ],
   },
   {
-    id: "GB-FAM-03",
-    nama: "GoBus Family",
+    id: "ME-FAM-03",
+    nama: "Mandiri Express Family",
     kapasitas: "40 seat",
     tipe: "Family",
     keterangan: "Cocok untuk keluarga besar, arisan, atau acara kampung.",
@@ -61,8 +61,8 @@ const daftarBus: BusItem[] = [
     ],
   },
   {
-    id: "GB-FAM-04",
-    nama: "GoBus Family+",
+    id: "ME-FAM-04",
+    nama: "Mandiri Express Family+",
     kapasitas: "40 seat",
     tipe: "Family",
     keterangan: "Bagasi ekstra untuk koper dan perlengkapan liburan.",
@@ -75,8 +75,8 @@ const daftarBus: BusItem[] = [
     ],
   },
   {
-    id: "GB-SCH-05",
-    nama: "GoBus School Trip",
+    id: "ME-SCH-05",
+    nama: "Mandiri Express School Trip",
     kapasitas: "50 seat",
     tipe: "School Trip",
     keterangan: "Dirancang untuk study tour dan kunjungan edukasi.",
@@ -89,8 +89,8 @@ const daftarBus: BusItem[] = [
     ],
   },
   {
-    id: "GB-SCH-06",
-    nama: "GoBus Graduation Tour",
+    id: "ME-SCH-06",
+    nama: "Mandiri Express Graduation Tour",
     kapasitas: "50 seat",
     tipe: "School Trip",
     keterangan: "Pilihan favorit untuk perpisahan dan liburan kelulusan.",
@@ -103,8 +103,8 @@ const daftarBus: BusItem[] = [
     ],
   },
   {
-    id: "GB-MINI-07",
-    nama: "GoBus Mini Coach",
+    id: "ME-MINI-07",
+    nama: "Mandiri Express Mini Coach",
     kapasitas: "25 seat",
     tipe: "Mini Bus",
     keterangan: "Rombongan kecil, komunitas, atau family trip ringkas.",
@@ -117,8 +117,8 @@ const daftarBus: BusItem[] = [
     ],
   },
   {
-    id: "GB-NGT-09",
-    nama: "GoBus Night Trip",
+    id: "ME-NGT-09",
+    nama: "Mandiri Express Night Trip",
     kapasitas: "45 seat",
     tipe: "Night Trip",
     keterangan: "Berangkat malam, waktu efisien, tiba pagi siap aktivitas.",
@@ -131,8 +131,8 @@ const daftarBus: BusItem[] = [
     ],
   },
   {
-    id: "GB-TXL-10",
-    nama: "GoBus Touring XL",
+    id: "ME-TXL-10",
+    nama: "Mandiri Express Touring XL",
     kapasitas: "48 seat",
     tipe: "Touring",
     keterangan: "Cocok untuk rombongan wisata besar dengan perjalanan antarkota.",
@@ -176,19 +176,24 @@ export default function DaftarBusSection() {
     <section id="daftar-bus" className="py-20 bg-white">
       <div className="max-w-7xl mx-auto px-4 lg:px-6 space-y-8 pt-20">
         <div className="space-y-3">
-          <div className="inline-flex items-center gap-2 rounded-lg border border-indigo-200 bg-indigo-50/80 px-4 py-2 text-xs font-semibold text-indigo-700 shadow-sm">
-            <span className="inline-flex h-2.5 w-2.5 rounded-full bg-indigo-500 shadow-[0_0_0_4px] shadow-indigo-400/30 animate-pulse" />
-            <Bus className="w-4 h-4 text-indigo-600" />
-            <span>Daftar Armada GoBus</span>
-            <span className="px-2 py-0.5 rounded-lg bg-indigo-100 text-[0.65rem] uppercase tracking-wide text-indigo-700 border border-indigo-200 font-bold">Pilih Bus</span>
+          <div className="inline-flex items-center gap-2 rounded-lg border border-red-200 bg-red-50/80 px-4 py-2 text-xs font-semibold text-red-700 shadow-sm">
+            <span className="inline-flex h-2.5 w-2.5 rounded-full bg-red-500 shadow-[0_0_0_4px] shadow-red-400/30 animate-pulse" />
+            <Bus className="w-4 h-4 text-red-600" />
+            <span>Daftar Armada Mandiri Express</span>
+            <span className="px-2 py-0.5 rounded-lg bg-red-100 text-[0.65rem] uppercase tracking-wide text-red-700 border border-red-200 font-bold">
+              Pilih Bus
+            </span>
           </div>
-          <h2 className="text-2xl md:text-3xl font-bold text-indigo-600">Pilih bus yang sesuai dengan kebutuhan rombongan Anda</h2>
+          <h2 className="text-2xl md:text-3xl font-bold text-red-600">Pilih bus yang sesuai dengan kebutuhan rombongan Anda</h2>
           <p className="text-sm md:text-base text-slate-600 max-w-2xl">Lihat galeri foto armada.</p>
         </div>
 
         <div className="grid gap-5 md:gap-6 md:grid-cols-2 lg:grid-cols-3">
           {daftarBus.map((bus) => (
-            <div key={bus.id} className="group relative overflow-hidden rounded-lg border border-slate-200 bg-white shadow-[0_10px_30px_rgba(15,23,42,0.04)] transition hover:-translate-y-0.5 hover:shadow-[0_12px_36px_rgba(15,23,42,0.07)]">
+            <div
+              key={bus.id}
+              className="group relative overflow-hidden rounded-lg border border-slate-200 bg-white shadow-[0_10px_30px_rgba(15,23,42,0.04)] transition hover:-translate-y-0.5 hover:shadow-[0_12px_36px_rgba(15,23,42,0.07)]"
+            >
               <button
                 onClick={() => {
                   setSelectedBus(bus)
@@ -212,8 +217,8 @@ export default function DaftarBusSection() {
                     <div className="space-y-1">
                       <p className="text-[0.7rem] text-slate-400">ID {bus.id}</p>
                       <p className="text-sm md:text-base font-semibold text-slate-900 line-clamp-2">{bus.nama}</p>
-                      <span className="inline-flex items-center gap-1 rounded-full bg-indigo-50 px-2 py-0.5 border border-indigo-100 text-[0.7rem] font-medium text-indigo-700">
-                        <span className="h-1.5 w-1.5 rounded-full bg-indigo-500" />
+                      <span className="inline-flex items-center gap-1 rounded-full bg-red-50 px-2 py-0.5 border border-red-100 text-[0.7rem] font-medium text-red-700">
+                        <span className="h-1.5 w-1.5 rounded-full bg-red-500" />
                         {bus.tipe}
                       </span>
                     </div>
@@ -226,7 +231,7 @@ export default function DaftarBusSection() {
                   <p className="text-xs text-slate-500 leading-relaxed min-h-10">{bus.keterangan}</p>
 
                   <div className="flex gap-3">
-                    <span className="w-full h-10 rounded-lg shadow-lg bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-semibold inline-flex items-center justify-center gap-2">
+                    <span className="w-full h-10 rounded-lg shadow-lg bg-red-600 hover:bg-red-700 text-white text-xs font-semibold inline-flex items-center justify-center gap-2">
                       <ImageIcon className="w-4 h-4" />
                       Buka Galeri
                     </span>
@@ -269,8 +274,14 @@ export default function DaftarBusSection() {
                       }}
                       className="group relative aspect-4/3 rounded-lg overflow-hidden border border-slate-200"
                     >
-                      <img src={item.src} alt={`${selectedBus?.nama} • ${item.label}`} className="w-full h-full object-cover transition group-hover:scale-[1.02]" />
-                      <span className="absolute left-2 bottom-2 rounded-lg bg-black/60 text-white text-[0.7rem] px-2 py-0.5">{item.label}</span>
+                      <img
+                        src={item.src}
+                        alt={`${selectedBus?.nama} • ${item.label}`}
+                        className="w-full h-full object-cover transition group-hover:scale-[1.02]"
+                      />
+                      <span className="absolute left-2 bottom-2 rounded-lg bg-black/60 text-white text-[0.7rem] px-2 py-0.5">
+                        {item.label}
+                      </span>
                     </button>
                   ))}
                 </div>
