@@ -36,11 +36,12 @@ export default function BusPage() {
             <h1 className="text-3xl md:text-4xl font-bold text-red-600 leading-tight">
               Cari bus charter untuk perjalanan rombongan Anda
             </h1>
+
             <p className="text-slate-600 text-sm md:text-base leading-relaxed max-w-xl">
               Atur titik jemput, tujuan, dan tanggal keberangkatan dengan mudah.{" "}
               <span className="font-semibold text-red-600">Mandiri Express</span> membantu menemukan
               <span className="text-red-600 font-semibold"> armada charter yang tepat</span> untuk wisata, acara kantor,
-              studi tour, ibadah, hingga perjalanan keluarga besar dalam satu rombongan.
+              studi tour, ibadah, hingga perjalanan keluarga besar.
             </p>
 
             <div className="flex flex-wrap gap-3 text-xs md:text-sm text-slate-600">
@@ -48,6 +49,7 @@ export default function BusPage() {
                 <span className="h-1.5 w-1.5 rounded-full bg-red-500" />
                 Sekali jalan atau pulang-pergi
               </div>
+
               <div className="inline-flex items-center gap-2 rounded-full bg-red-50 px-3 py-1 border border-red-100 text-red-700">
                 <Users className="w-3.5 h-3.5" />
                 Cocok untuk rombongan kecil hingga besar
@@ -71,15 +73,15 @@ export default function BusPage() {
                     Temukan bus charter untuk rombongan Anda
                   </p>
                   <p className="text-[0.78rem] md:text-xs text-slate-500">
-                    Isi detail perjalanan di bawah ini, lalu lihat pilihan armada charter yang sesuai dengan kebutuhan
-                    rombongan pada tanggal tersebut.
+                    Isi detail perjalanan di bawah ini, lalu lihat pilihan armada charter yang sesuai.
                   </p>
                 </div>
               </div>
 
               <div className="space-y-4">
+
                 <div className="space-y-1.5">
-                  <label className="text-xs font-medium text-slate-700 flex items-center gap-1">
+                  <label htmlFor="from" className="text-xs font-medium text-slate-700">
                     Dari (Kota / Titik Jemput)
                   </label>
                   <div className="flex items-center gap-3">
@@ -87,7 +89,10 @@ export default function BusPage() {
                       <Send className="w-4 h-4 text-red-600" />
                     </div>
                     <Input
+                      id="from"
+                      name="from"
                       placeholder="Contoh: Medan"
+                      autoComplete="address-level1"
                       value={from}
                       onChange={(e) => setFrom(e.target.value)}
                       className="h-11 rounded-md border-slate-200 focus-visible:ring-red-500 text-sm"
@@ -96,7 +101,7 @@ export default function BusPage() {
                 </div>
 
                 <div className="space-y-1.5">
-                  <label className="text-xs font-medium text-slate-700 flex items-center gap-1">
+                  <label htmlFor="to" className="text-xs font-medium text-slate-700">
                     Tujuan (Kota / Lokasi Akhir)
                   </label>
                   <div className="flex items-center gap-3">
@@ -104,7 +109,10 @@ export default function BusPage() {
                       <MapPin className="w-4 h-4 text-red-600" />
                     </div>
                     <Input
+                      id="to"
+                      name="to"
                       placeholder="Contoh: Berastagi"
+                      autoComplete="off"
                       value={to}
                       onChange={(e) => setTo(e.target.value)}
                       className="h-11 rounded-md border-slate-200 focus-visible:ring-red-500 text-sm"
@@ -113,7 +121,7 @@ export default function BusPage() {
                 </div>
 
                 <div className="space-y-1.5">
-                  <label className="text-xs font-medium text-slate-700 flex items-center gap-1">
+                  <label htmlFor="date" className="text-xs font-medium text-slate-700">
                     Tanggal keberangkatan
                   </label>
                   <div className="flex items-center gap-3">
@@ -121,7 +129,10 @@ export default function BusPage() {
                       <Calendar className="w-4 h-4 text-red-600" />
                     </div>
                     <Input
+                      id="date"
+                      name="date"
                       type="date"
+                      autoComplete="date"
                       value={date}
                       onChange={(e) => setDate(e.target.value)}
                       className="h-11 rounded-md border-slate-200 focus-visible:ring-red-500 text-sm"
@@ -130,7 +141,7 @@ export default function BusPage() {
                 </div>
 
                 <div className="space-y-1.5">
-                  <label className="text-xs font-medium text-slate-700 flex items-center gap-1">
+                  <label htmlFor="passenger" className="text-xs font-medium text-slate-700">
                     Perkiraan jumlah penumpang rombongan
                   </label>
                   <div className="flex items-center gap-3">
@@ -138,7 +149,10 @@ export default function BusPage() {
                       <Users className="w-4 h-4 text-red-600" />
                     </div>
                     <Input
+                      id="passenger"
+                      name="passenger"
                       type="number"
+                      autoComplete="off"
                       min={5}
                       placeholder="Contoh: 30"
                       value={passenger}
@@ -147,6 +161,7 @@ export default function BusPage() {
                     />
                   </div>
                 </div>
+
               </div>
 
               <div className="space-y-2 pt-2">
@@ -159,8 +174,7 @@ export default function BusPage() {
                 </Button>
 
                 <p className="text-[0.7rem] text-slate-500 text-center leading-relaxed">
-                  Data yang Anda isi akan membantu kami menampilkan armada charter yang paling sesuai dengan
-                  kebutuhan perjalanan rombongan Anda.
+                  Data yang Anda isi membantu kami menampilkan armada yang paling sesuai.
                 </p>
               </div>
             </CardContent>

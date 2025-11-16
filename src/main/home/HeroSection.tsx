@@ -60,7 +60,7 @@ export default function HeroSection() {
 
   return (
     <section className="bg-white">
-      <div className="max-w-7xl mx-auto px-4 pt-5">
+      <div className="max-w-7xl mx-auto px-4">
         <div className="grid lg:grid-cols-2 items-center gap-10 min-h-[80vh]">
           <div className="space-y-6">
             <div className="inline-flex items-center gap-2 rounded-lg border border-red-200 bg-red-50/80 px-4 py-2.5 text-xs font-semibold text-red-700 shadow-sm">
@@ -78,9 +78,8 @@ export default function HeroSection() {
 
             <p className="text-slate-600 leading-relaxed">
               Nikmati kemudahan menyewa bus tanpa ribet. Pilih{" "}
-              <span className="text-red-600 font-semibold">armada terbaik</span> untuk perjalanan rombongan Anda  dengan
-              layanan{" "}
-              <span className="text-red-600 font-semibold">nyaman, aman, dan fleksibel</span> hanya di{" "}
+              <span className="text-red-600 font-semibold">armada terbaik</span> untuk perjalanan rombongan Anda dengan
+              layanan <span className="text-red-600 font-semibold">nyaman, aman, dan fleksibel</span> hanya di{" "}
               <span className="text-red-600 font-semibold">Mandiri Express</span>. Pemesanan{" "}
               <span className="text-red-600 font-semibold">transparan</span> dan didukung tim operasional yang siaga.
             </p>
@@ -93,6 +92,7 @@ export default function HeroSection() {
                     <ArrowRight className="w-4 h-4" />
                   </button>
                 </DialogTrigger>
+
                 <DialogContent className="sm:max-w-lg">
                   <DialogHeader>
                     <DialogTitle>Form Pemesanan Charter Bus</DialogTitle>
@@ -102,37 +102,29 @@ export default function HeroSection() {
                   </DialogHeader>
 
                   <div className="grid sm:grid-cols-2 gap-3">
+                    <label htmlFor="asal" className="sr-only">Asal</label>
                     <div className="relative">
                       <MapPin className="w-4 h-4 text-slate-400 absolute left-3 top-3 pointer-events-none" />
-                      <Input
-                        value={asal}
-                        onChange={(e) => setAsal(e.target.value)}
-                        className="pl-9 h-11"
-                        placeholder="Kota Asal"
-                      />
+                      <Input id="asal" name="asal" value={asal} onChange={(e) => setAsal(e.target.value)} className="pl-9 h-11" placeholder="Kota Asal" />
                     </div>
+
+                    <label htmlFor="tujuan" className="sr-only">Tujuan</label>
                     <div className="relative">
                       <MapPin className="w-4 h-4 text-slate-400 absolute left-3 top-3 pointer-events-none" />
-                      <Input
-                        value={tujuan}
-                        onChange={(e) => setTujuan(e.target.value)}
-                        className="pl-9 h-11"
-                        placeholder="Kota Tujuan"
-                      />
+                      <Input id="tujuan" name="tujuan" value={tujuan} onChange={(e) => setTujuan(e.target.value)} className="pl-9 h-11" placeholder="Kota Tujuan" />
                     </div>
+
+                    <label htmlFor="tanggal" className="sr-only">Tanggal</label>
                     <div className="relative">
                       <Calendar className="w-4 h-4 text-slate-400 absolute left-3 top-3 pointer-events-none" />
-                      <Input
-                        type="date"
-                        value={tanggal}
-                        onChange={(e) => setTanggal(e.target.value)}
-                        className="pl-9 h-11"
-                      />
+                      <Input id="tanggal" name="tanggal" type="date" value={tanggal} onChange={(e) => setTanggal(e.target.value)} className="pl-9 h-11" />
                     </div>
+
+                    <label htmlFor="durasi" className="sr-only">Durasi</label>
                     <div className="relative">
                       <Moon className="w-4 h-4 text-slate-400 absolute left-3 top-3 pointer-events-none" />
                       <Select value={String(durasi)} onValueChange={(v) => setDurasi(parseInt(v))}>
-                        <SelectTrigger className="h-11 text-sm pl-9 pr-3 w-full">
+                        <SelectTrigger id="durasi" name="durasi" className="h-11 text-sm pl-9 pr-3 w-full">
                           <SelectValue placeholder="Durasi" />
                         </SelectTrigger>
                         <SelectContent>
@@ -144,9 +136,13 @@ export default function HeroSection() {
                         </SelectContent>
                       </Select>
                     </div>
+
+                    <label htmlFor="penumpang" className="sr-only">Penumpang</label>
                     <div className="relative">
                       <Users className="w-4 h-4 text-slate-400 absolute left-3 top-3 pointer-events-none" />
                       <Input
+                        id="penumpang"
+                        name="penumpang"
                         type="number"
                         min={10}
                         max={60}
@@ -156,8 +152,10 @@ export default function HeroSection() {
                         placeholder="Jumlah Penumpang"
                       />
                     </div>
+
+                    <label htmlFor="layanan" className="sr-only">Layanan</label>
                     <Select value={layanan} onValueChange={setLayanan}>
-                      <SelectTrigger className="h-11 text-sm px-3 w-full">
+                      <SelectTrigger id="layanan" name="layanan" className="h-11 text-sm px-3 w-full">
                         <SelectValue placeholder="Jenis Layanan" />
                       </SelectTrigger>
                       <SelectContent>
@@ -215,47 +213,18 @@ export default function HeroSection() {
             </div>
 
             <div className="flex flex-wrap gap-2">
-              <a
-                href="#daftar-bus"
-                className="px-3 py-1.5 text-xs rounded-full border border-red-200 text-red-700 hover:bg-red-50 transition"
-              >
-                Medan–Berastagi
-              </a>
-              <a
-                href="#daftar-bus"
-                className="px-3 py-1.5 text-xs rounded-full border border-red-200 text-red-700 hover:bg-red-50 transition"
-              >
-                Medan–Pematangsiantar
-              </a>
-              <a
-                href="#daftar-bus"
-                className="px-3 py-1.5 text-xs rounded-full border border-red-200 text-red-700 hover:bg-red-50 transition"
-              >
-                Medan–Parapat
-              </a>
-              <a
-                href="#daftar-bus"
-                className="px-3 py-1.5 text-xs rounded-full border border-red-200 text-red-700 hover:bg-red-50 transition"
-              >
-                Medan–Binjai
-              </a>
+              <a href="#daftar-bus" className="px-3 py-1.5 text-xs rounded-full border border-red-200 text-red-700 hover:bg-red-50 transition">Medan–Berastagi</a>
+              <a href="#daftar-bus" className="px-3 py-1.5 text-xs rounded-full border border-red-200 text-red-700 hover:bg-red-50 transition">Medan–Pematangsiantar</a>
+              <a href="#daftar-bus" className="px-3 py-1.5 text-xs rounded-full border border-red-200 text-red-700 hover:bg-red-50 transition">Medan–Parapat</a>
+              <a href="#daftar-bus" className="px-3 py-1.5 text-xs rounded-full border border-red-200 text-red-700 hover:bg-red-50 transition">Medan–Binjai</a>
             </div>
           </div>
 
           <div className="flex justify-center lg:justify-end">
             <div className="relative w-full max-w-md h-64 md:h-80">
               {busSlides.map((slide, index) => (
-                <div
-                  key={slide.title}
-                  className={`absolute inset-0 transition-opacity duration-500 ${
-                    index === currentIndex ? "opacity-100" : "opacity-0"
-                  }`}
-                >
-                  <img
-                    src={slide.src}
-                    alt={slide.title}
-                    className="w-full h-full object-cover rounded-lg drop-shadow-xl"
-                  />
+                <div key={slide.title} className={`absolute inset-0 transition-opacity duration-500 ${index === currentIndex ? "opacity-100" : "opacity-0"}`}>
+                  <img src={slide.src} alt={slide.title} className="w-full h-full object-cover rounded-lg drop-shadow-xl" />
                   <div className="absolute bottom-4 left-4 right-4 rounded-lg bg-slate-900/70 backdrop-blur-md px-4 py-3 text-xs md:text-sm text-slate-100 shadow-lg">
                     <p className="font-semibold">{slide.title}</p>
                     <p className="text-slate-300 text-[0.7rem] md:text-xs">{slide.subtitle}</p>
@@ -263,19 +232,10 @@ export default function HeroSection() {
                 </div>
               ))}
 
-              <button
-                type="button"
-                onClick={goPrev}
-                className="absolute left-3 top-1/2 -translate-y-1/2 inline-flex items-center justify-center rounded-full bg-white/90 shadow-md w-8 h-8 hover:bg-red-50 transition"
-              >
+              <button type="button" onClick={goPrev} className="absolute left-3 top-1/2 -translate-y-1/2 inline-flex items-center justify-center rounded-full bg-white/90 shadow-md w-8 h-8 hover:bg-red-50 transition">
                 <ChevronLeft className="w-4 h-4 text-slate-700" />
               </button>
-
-              <button
-                type="button"
-                onClick={goNext}
-                className="absolute right-3 top-1/2 -translate-y-1/2 inline-flex items-center justify-center rounded-full bg-white/90 shadow-md w-8 h-8 hover:bg-red-50 transition"
-              >
+              <button type="button" onClick={goNext} className="absolute right-3 top-1/2 -translate-y-1/2 inline-flex items-center justify-center rounded-full bg-white/90 shadow-md w-8 h-8 hover:bg-red-50 transition">
                 <ChevronRight className="w-4 h-4 text-slate-700" />
               </button>
 
@@ -284,9 +244,7 @@ export default function HeroSection() {
                   <button
                     key={s.title}
                     onClick={() => setCurrentIndex(idx)}
-                    className={`h-10 w-14 rounded-lg overflow-hidden ring-1 transition ${
-                      idx === currentIndex ? "ring-red-500 scale-105" : "ring-red-200 hover:scale-105"
-                    }`}
+                    className={`h-10 w-14 rounded-lg overflow-hidden ring-1 transition ${idx === currentIndex ? "ring-red-500 scale-105" : "ring-red-200 hover:scale-105"}`}
                   >
                     <img src={s.src} alt={s.title} className="h-full w-full object-cover" />
                   </button>
@@ -294,6 +252,7 @@ export default function HeroSection() {
               </div>
             </div>
           </div>
+
         </div>
       </div>
     </section>

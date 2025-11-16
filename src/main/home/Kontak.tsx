@@ -102,10 +102,12 @@ export default function KontakPage() {
 
               <div className="grid gap-4">
                 <div className="space-y-1.5">
-                  <Label className="text-xs font-medium text-slate-700">
+                  <Label htmlFor="pic-nama" className="text-xs font-medium text-slate-700">
                     Nama Lengkap PIC Rombongan
                   </Label>
                   <Input
+                    id="pic-nama"
+                    name="picNama"
                     placeholder="Masukkan nama penanggung jawab rombongan"
                     className="h-10 border-slate-200 focus-visible:ring-red-500 text-sm"
                   />
@@ -113,20 +115,24 @@ export default function KontakPage() {
 
                 <div className="grid gap-4 md:grid-cols-2">
                   <div className="space-y-1.5">
-                    <Label className="text-xs font-medium text-slate-700">
+                    <Label htmlFor="email" className="text-xs font-medium text-slate-700">
                       Email
                     </Label>
                     <Input
+                      id="email"
+                      name="email"
                       type="email"
                       placeholder="Masukkan email aktif panitia"
                       className="h-10 border-slate-200 focus-visible:ring-red-500 text-sm"
                     />
                   </div>
                   <div className="space-y-1.5">
-                    <Label className="text-xs font-medium text-slate-700">
+                    <Label htmlFor="whatsapp" className="text-xs font-medium text-slate-700">
                       No. WhatsApp
                     </Label>
                     <Input
+                      id="whatsapp"
+                      name="whatsapp"
                       placeholder="Contoh: 0812xxxxxxx"
                       className="h-10 border-slate-200 focus-visible:ring-red-500 text-sm"
                     />
@@ -134,30 +140,36 @@ export default function KontakPage() {
                 </div>
 
                 <div className="space-y-1.5">
-                  <Label className="text-xs font-medium text-slate-700">
+                  <Label htmlFor="subjek" className="text-xs font-medium text-slate-700">
                     Subjek Pesan
                   </Label>
                   <Input
+                    id="subjek"
+                    name="subjek"
                     placeholder="Contoh: Permintaan charter bus untuk study tour"
                     className="h-10 border-slate-200 focus-visible:ring-red-500 text-sm"
                   />
                 </div>
 
                 <div className="space-y-1.5">
-                  <Label className="text-xs font-medium text-slate-700">
+                  <Label htmlFor="detail-perjalanan" className="text-xs font-medium text-slate-700">
                     Detail Kebutuhan Perjalanan Rombongan
                   </Label>
                   <Textarea
+                    id="detail-perjalanan"
+                    name="detailPerjalanan"
                     placeholder="Ceritakan rencana perjalanan rombongan Anda: tujuan, tanggal, jumlah penumpang, titik jemput, dan keperluan (wisata, kantor, sekolah, dll)."
                     className="min-h-[120px] border-slate-200 focus-visible:ring-red-500 text-sm"
                   />
                 </div>
 
                 <div className="space-y-1.5">
-                  <Label className="text-xs font-medium text-slate-700">
+                  <Label htmlFor="tanggal-berangkat" className="text-xs font-medium text-slate-700">
                     Perkiraan tanggal berangkat (opsional)
                   </Label>
                   <Input
+                    id="tanggal-berangkat"
+                    name="tanggalBerangkat"
                     type="date"
                     className="h-10 border-slate-200 focus-visible:ring-red-500 text-sm"
                   />

@@ -123,6 +123,8 @@ export default function BusDetailPage() {
                     <Label htmlFor="nama">Nama lengkap PIC</Label>
                     <Input
                       id="nama"
+                      name="picNama"
+                      autoComplete="name"
                       required
                       placeholder="Contoh: Cahaya Putri"
                       className="h-10 text-sm border-slate-300 focus-visible:ring-red-500"
@@ -132,6 +134,8 @@ export default function BusDetailPage() {
                     <Label htmlFor="whatsapp">Nomor WhatsApp aktif</Label>
                     <Input
                       id="whatsapp"
+                      name="whatsapp"
+                      autoComplete="tel"
                       required
                       placeholder="Contoh: 0812xxxxxxxx"
                       className="h-10 text-sm border-slate-300 focus-visible:ring-red-500"
@@ -144,7 +148,9 @@ export default function BusDetailPage() {
                     <Label htmlFor="email">Email untuk dokumen pemesanan</Label>
                     <Input
                       id="email"
+                      name="email"
                       type="email"
+                      autoComplete="email"
                       required
                       placeholder="nama@email.com"
                       className="h-10 text-sm border-slate-300 focus-visible:ring-red-500"
@@ -154,6 +160,8 @@ export default function BusDetailPage() {
                     <Label htmlFor="instansi">Instansi / komunitas (opsional)</Label>
                     <Input
                       id="instansi"
+                      name="instansi"
+                      autoComplete="organization"
                       placeholder="Perusahaan, kampus, atau nama rombongan"
                       className="h-10 text-sm border-slate-300 focus-visible:ring-red-500"
                     />
@@ -178,7 +186,9 @@ export default function BusDetailPage() {
                     <Label htmlFor="tanggal">Tanggal berangkat</Label>
                     <Input
                       id="tanggal"
+                      name="tanggalBerangkat"
                       type="date"
+                      autoComplete="off"
                       required
                       className="h-10 text-sm border-slate-300 focus-visible:ring-red-500"
                     />
@@ -187,8 +197,10 @@ export default function BusDetailPage() {
                     <Label htmlFor="durasi">Lama sewa (hari)</Label>
                     <Input
                       id="durasi"
+                      name="durasiSewa"
                       type="number"
                       min={1}
+                      autoComplete="off"
                       required
                       placeholder="Contoh: 3"
                       className="h-10 text-sm border-slate-300 focus-visible:ring-red-500"
@@ -201,6 +213,8 @@ export default function BusDetailPage() {
                     <Label htmlFor="jemput">Titik jemput</Label>
                     <Input
                       id="jemput"
+                      name="titikJemput"
+                      autoComplete="off"
                       required
                       placeholder="Contoh: Medan Sunggal, depan kampus"
                       className="h-10 text-sm border-slate-300 focus-visible:ring-red-500"
@@ -210,6 +224,8 @@ export default function BusDetailPage() {
                     <Label htmlFor="turun">Titik turun</Label>
                     <Input
                       id="turun"
+                      name="titikTurun"
+                      autoComplete="off"
                       required
                       placeholder="Contoh: Bandar Lampung, Rajabasa"
                       className="h-10 text-sm border-slate-300 focus-visible:ring-red-500"
@@ -221,8 +237,10 @@ export default function BusDetailPage() {
                   <Label htmlFor="penumpang">Perkiraan jumlah penumpang</Label>
                   <Input
                     id="penumpang"
+                    name="jumlahPenumpang"
                     type="number"
                     min={1}
+                    autoComplete="off"
                     required
                     placeholder="Contoh: 35 orang"
                     className="h-10 text-sm border-slate-300 focus-visible:ring-red-500"
@@ -233,7 +251,9 @@ export default function BusDetailPage() {
                   <Label htmlFor="catatan">Catatan tambahan (opsional)</Label>
                   <textarea
                     id="catatan"
+                    name="catatan"
                     rows={3}
+                    autoComplete="off"
                     placeholder="Contoh: Butuh stop makan 2x, rombongan keluarga, ingin kursi reclining, dll."
                     className="w-full rounded-md border border-slate-300 text-sm px-3 py-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500 resize-none"
                   />
